@@ -1,0 +1,79 @@
+<article class="container" *transloco="let t; read: 'addProduct'">
+  <section class="create">
+    <h2>{{t('header')}}</h2>
+    <form>
+      <div class="mb-3">
+        <label for="name">{{t('pName')}}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          name="productName"
+          placeholder="Product Name"
+          [(ngModel)]="newProduct.productName"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="text">{{t('pCode')}}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="productCode"
+          name="productCode"
+          placeholder="Product Code"
+          [(ngModel)]="newProduct.productCode"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="text">{{t('rDate')}}</label>
+        <input
+          type="text"
+          class="form-control"
+          id="releaseDate"
+          name="releaseDate"
+          placeholder="Release Date"
+          [(ngModel)]="newProduct.releaseDate"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="textarea">{{t('desc')}}</label>
+        <input
+          type="textarea"
+          class="form-control"
+          id="description"
+          name="description"
+          placeholder="Description"
+          [(ngModel)]="newProduct.description"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="number">{{t('price')}}</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          placeholder="Product Price"
+          [(ngModel)]="newProduct.price"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="number">{{t('sRating')}}</label>
+        <input
+          type="number"
+          class="form-control"
+          id="starRating"
+          name="starRating"
+          placeholder="Star Rating"
+          [(ngModel)]="newProduct.starRating"
+        />
+      </div>
+      <app-file-uploader (imageUploaded)="handleImageUpload($event)"></app-file-uploader>
+      <div class="row">
+        <div class="offset-md-5 col-md-2">
+          <button type="button" class="btn btn-primary" (click)="createProduct()">{{t('method')}}</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</article>

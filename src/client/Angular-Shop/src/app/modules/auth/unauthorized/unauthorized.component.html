@@ -1,0 +1,10 @@
+<div id="unauth" *transloco="let t; read: 'auth'">
+  <div class="unauth">
+    <div class="unauth-401">
+      <h1>401</h1>
+    </div>
+    <h2>{{t('unauthH2')}}</h2>
+    <p>{{t('unauthTitle')}}</p>
+    <a routerLink="/auth/login">{{t('loginReturn')}}</a>
+  </div>
+</div>

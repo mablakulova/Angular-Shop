@@ -1,0 +1,49 @@
+{
+  "addProduct": {
+    "header": "Create New product",
+    "pName": "Product Name",
+    "pCode": "Product Code",
+    "rDate": "Release Date",
+    "desc": "Description",
+    "price": "Price",
+    "sRating": "Star Rating",
+    "method": "Create"
+  },
+  "navBar": {
+    "home": "Home",
+    "list": "Products List",
+    "login": "Login",
+    "logout": "Log Out"
+  },
+  "productList": {
+    "filter": "Filter By",
+    "filtered": "Filtered By",
+    "imageShow": "Show",
+    "imageHide": "Hide",
+    "image": "Image",
+    "product": "Product",
+    "code": "Code",
+    "desc": "Description",
+    "availDate": "Availability",
+    "price": "Price",
+    "rating": "5 Star Rating",
+    "click": "Add Product",
+    "back": "Back to List",
+    "pageTitle": "Product Details"
+  },
+  "home": {
+    "pageTitle": "Home",
+    "dev": "Developed by",
+    "github": "Github Account"
+  },
+  "auth": {
+    "name": "Username",
+    "nameError": "Username is required",
+    "password": "Password",
+    "passwordError": "Password is required",
+    "login": "Login",
+    "unauthH2": "Oops! You haven't access to this page.",
+    "unauthTitle": "Sorry but you have to login to access it.",
+    "loginReturn": "Go To Loginpage"
+  }
+}

@@ -1,0 +1,57 @@
+﻿<div class="col-md-6 offset-md-3 mt-5" *transloco="let t; read: 'auth'">
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="username">{{ t('name') }}</label>
+          <input
+            type="text"
+            formControlName="username"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formControl['username'].errors }"
+            [type]="(maskUserName$ | async) ? 'password' : 'text'"
+          />
+          <div *ngIf="submitted && formControl['username'].errors" class="invalid-feedback">
+            <div *ngIf="formControl['username'].errors['required']">{{ t('nameError') }}</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">{{ t('password') }}</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && formControl['password'].errors }"
+          />
+          <div *ngIf="submitted && formControl['password'].errors" class="invalid-feedback">
+            <div *ngIf="formControl['password'].errors['required']">{{ t('passwordError') }}</div>
+            <div class="error-text" *ngIf="formControl['password'].errors['passwordStrength']">
+              {{ formControl['password'].errors['passwordStrength'] }}
+            </div>
+          </div>
+        </div>
+        <button [disabled]="loading" class="btn btn-primary logButton">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          {{ t('login') }}
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{ error }}</div>
+      </form>
+    </div>
+
+    <div class="card-footer">
+      <div class="row">
+        <div class="form-check col-md-7">
+          <label>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              (change)="checkChanged()"
+              [checked]="maskUserName$ | async"
+            />
+            Mask user name
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

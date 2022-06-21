@@ -1,0 +1,68 @@
+<mat-sidenav-container *transloco="let t; read: 'navBar'">
+    <mat-sidenav #sidenav role="navigation">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/home">
+          <mat-icon class="icon">home</mat-icon>
+          <span class="label">{{t('home')}}</span>
+        </a>
+        <a mat-list-item routerLink="/products">
+          <mat-icon class="icon">view_list</mat-icon>
+          <span class="label">{{t('list')}}</span>
+        </a>
+        <a mat-list-item routerLink="/auth/login" *ngIf="!user">
+          <mat-icon class="icon">logout</mat-icon>
+          <span class="label">{{t('login')}}</span>
+        </a>
+        <a mat-list-item type="button" (click)="logout()" *ngIf="user">
+          <mat-icon class="icon">logout</mat-icon>
+          <span class="label">{{t('logout')}}</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary">
+        <div fxHide.gt-xs>
+          <button mat-icon-button>
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+        <div>
+          <a> Angular Shop </a>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+          <ul fxLayout fxLayoutGap="30px" class="navigation-items">
+            <li>
+              <a routerLink="/home">
+                <mat-icon class="icon">home</mat-icon>
+                <span [appHighlight]="color" class="label">{{t('home')}}</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/products">
+                <mat-icon class="icon">view_list</mat-icon>
+                <span [appHighlight]="color" class="label">{{t('list')}}</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/auth/login" *ngIf="!user">
+                <mat-icon class="icon">login</mat-icon>
+                <span [appHighlight]="color" class="label">{{t('login')}}</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="logout()" *ngIf="user">
+                <mat-icon class="icon">logout</mat-icon>
+                <span [appHighlight]="color" class="label">{{t('logout')}}</span>
+              </a>
+            </li>
+            <button mat-button [matMenuTriggerFor]="menu">{{ siteLanguage }}</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="changeSiteLanguage('en')">English</button>
+              <button mat-menu-item (click)="changeSiteLanguage('ru')">Russian</button>
+            </mat-menu>
+          </ul>
+        </div>
+      </mat-toolbar>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
