@@ -49,6 +49,8 @@ app.UseHttpsRedirection();
 
 app.UseRouting();
 
+app.UseStaticFiles();
+
 app.UseCors();
 
 app.UseEndpoints(endpoints =>
