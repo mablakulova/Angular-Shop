@@ -1,5 +1,4 @@
 ﻿using Angular_Shop.API.Responses;
-using FluentValidation;
 using System.Net;
 using System.Text.Json;
 

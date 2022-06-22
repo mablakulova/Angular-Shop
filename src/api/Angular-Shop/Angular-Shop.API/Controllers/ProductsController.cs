@@ -55,9 +55,9 @@ namespace Angular_Shop.API.Controllers
         }
 
         [HttpPost]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [Produces("application/json")]
         [Consumes("application/json")]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<ActionResult<ProductApiModel>> AddProduct([FromBody] ProductApiModel productApiModel)
         {
             _logger.LogInformation("Adding New Product.");
@@ -71,9 +71,9 @@ namespace Angular_Shop.API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [Produces("application/json")]
         [Consumes("application/json")]
-        [ServiceFilter(typeof(ValidationFilterAttribute))]
         public async Task<ActionResult<ProductApiModel>> UpdateProduct(int id, [FromBody] ProductApiModel productApiModel)
         {
             _logger.LogInformation("Updating given product.");

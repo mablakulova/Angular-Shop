@@ -3,8 +3,8 @@ using System.Text.Json;
 
 namespace Angular_Shop.API.Client
 {
-	public class CurrencyClient
-	{
+    public class CurrencyClient
+    {
 		private readonly IHttpClientFactory _httpClientFactory;
 		private readonly JsonSerializerOptions _options;
 

@@ -8,7 +8,7 @@ import { IProduct } from '../shared/product';
   providedIn: 'root',
 })
 export class ProductService {
-  private productUrl = 'api/products/';
+  private productUrl = 'https://localhost:7123/api/Products';
 
   constructor(private http: HttpClient) {}
 
@@ -37,3 +37,4 @@ export class ProductService {
     return this.http.post(this.productUrl, product);
   }
 }
+ 

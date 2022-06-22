@@ -3,10 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ProductModule } from './product/product.module';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientInMemoryWebApiModule, InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { DataService } from './core/service/data.services';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -30,8 +26,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
     ProductModule,
     AuthModule,
     NavBarModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService),
-    InMemoryWebApiModule.forRoot(DataService, {passThruUnknownUrl: true}),
     SharedModule,
     CoreModule,
     LoggerModule.forRoot({
