@@ -3,6 +3,7 @@ using Angular_Shop.API.Configurations;
 using Angular_Shop.API.Filters;
 using Angular_Shop.API.Middlewares;
 using Angular_Shop.Data.Data;
+using Angular_Shop.Domain.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,15 +16,13 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 builder.Services.AddScoped<ValidationFilterAttribute>();
+builder.Services.AddHttpClient();
+builder.Services.AddSingleton<CurrencyClient>();
+builder.Services.Configure<ExchangeClientOptions>(builder.Configuration.GetSection(ExchangeClientOptions.Section));
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
-builder.Services.AddHttpClient("ExchangeClient", config =>
-{
-    config.BaseAddress = new Uri("https://api.exchangerate.host");
-});
-builder.Services.AddScoped<CurrencyClient>();
 builder.Services.ConfigureRepositories();
 builder.Services.ConfigureSupervisors();
 builder.Services.ConfigureValidators();

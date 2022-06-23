@@ -15,13 +15,11 @@ namespace Angular_Shop.API.Controllers
     {
         private readonly ILogger<ExchangesController> _logger;
         private readonly CurrencyClient _client;
-        private readonly IMapper _mapper;
 
-        public ExchangesController(ILogger<ExchangesController> logger, CurrencyClient client, IMapper mapper)
+        public ExchangesController(ILogger<ExchangesController> logger, CurrencyClient client)
         {
             _logger = logger;
             _client = client;
-            _mapper = mapper;
         }
 
         [HttpGet("convert")]
@@ -29,8 +27,7 @@ namespace Angular_Shop.API.Controllers
         {
             _logger.LogInformation("Converting currency to another.");
 
-            var currency = await _client.ConvertCurrency(model.From, model.To, model.Amount);
-            var result = _mapper.Map<CurrencyResponse>(currency);
+            var result = await _client.ConvertCurrency(model.From, model.To, model.Amount);
 
             return result;
         }
