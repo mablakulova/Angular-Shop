@@ -18,17 +18,17 @@ describe('The App Routing', () => {
     location = TestBed.get(Location) as Location;
   });
 
-  it('automatically redirects to home when the app starts', fakeAsync(() => {
-    router.navigate(['']);
+  it('automatically redirects to /auth when invoking auth', fakeAsync(() => {
+    router.navigate(['auth']);
     tick();
 
-    expect(location.path()).toBe('/home');
+    expect(location.path()).toBe('/auth');
   }));
 
-  it('automatically redirects to search when invoking /search', fakeAsync(() => {
+  it('automatically redirects to unauthorized when invoking products', fakeAsync(() => {
     router.navigate(['/products']);
     tick();
 
-    expect(location.path()).toBe('/products');
+    expect(location.path()).toBe('/auth/unauthorized?returnUrl=%2Fproducts');
   }));
 });

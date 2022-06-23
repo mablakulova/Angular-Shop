@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { TestBed, fakeAsync, tick, async, ComponentFixture } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { routes } from './app-routing.module';
 import { HomeComponent } from './modules/home/home.component';
 import { Location } from '@angular/common';
+import { HomeModule } from './modules/home/home.module';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 @Component({
   selector: 'routing-test-cmp',
@@ -20,7 +22,7 @@ describe('The App Routing (with custom cmp)', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes(routes)],
+      imports: [RouterTestingModule.withRoutes(routes), HomeModule, HttpClientTestingModule],
       declarations: [HomeComponent, RoutingTestComponent],
     });
 
@@ -34,7 +36,7 @@ describe('The App Routing (with custom cmp)', () => {
   it('should properly redirect to home initially', async(() => {
     router.navigate(['']);
     routingComponentFixture.whenStable().then(() => {
-      expect(location.path()).toBe('/home');
+      expect(location.path()).toBe('/');
     });
   }));
 });

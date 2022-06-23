@@ -21,12 +21,12 @@ describe('ErrorInterceptor', () => {
     const error = { status: 401, statusText: 'error' };
 
     it('should auto logout if 401 response returned from api', () => {
-      httpRequestSpy = jasmine.createSpyObj('HttpRequest', ['testError']);
+      httpRequestSpy = jasmine.createSpyObj('HttpRequest', ['error']);
       httpHandlerSpy = jasmine.createSpyObj('HttpHandler', ['handle']);
-      httpHandlerSpy.handle.and.returnValue(throwError({ error: { message: 'test-error' } }));
+      httpHandlerSpy.handle.and.returnValue(throwError({ error: { message: 'error' } }));
 
       interceptor.intercept(httpRequestSpy, httpHandlerSpy).subscribe((err) => {
-        expect(err).toEqual('test-error');
+        expect(err).toEqual('error');
       });
     });
   });

@@ -29,7 +29,7 @@ describe('AuthGuard', () => {
   it('should redirect an unauthenticated user to the login route', () => {
     expect(guard.canActivate(routeMock, routeStateMock)).toEqual(false);
     expect(routerMock.navigate).toHaveBeenCalledWith(
-      ['/unauthorized'],
+      ['/auth/unauthorized'],
       Object({ queryParams: Object({ returnUrl: '/products' }) }),
     );
   });
