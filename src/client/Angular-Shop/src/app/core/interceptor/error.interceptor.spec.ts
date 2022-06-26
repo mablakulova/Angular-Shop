@@ -1,5 +1,4 @@
 import { throwError } from 'rxjs';
-import { AuthenticationService } from '../service/authentication.service';
 import { ErrorInterceptor } from './error.interceptor';
 
 describe('ErrorInterceptor', () => {
