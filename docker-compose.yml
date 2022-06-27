@@ -1,0 +1,36 @@
+version: "3"
+services:
+    reverse-proxy:
+        build: ./reverse-proxy/.
+        image: angular-shop-reverse-proxy
+        ports:
+            - "5000:80"
+            - "5001:5001"
+        networks:
+        - overlay
+        depends_on:
+            - frontend
+    frontend:
+        build: ./client/.
+        image: angular-shop-frontend
+        networks:
+            - overlay
+        depends_on:
+            - backend
+    backend:
+        build: ./api/.
+        image: angular-shop-backend
+        networks:
+            - overlay
+        depends_on:
+            - postgres-db
+    postgres-db:
+        image: "postgres"
+        networks:
+            - overlay
+        environment:
+            POSTGRES_USER: "user"
+            POSTGRES_PASSWORD: "password"
+
+networks:
+  overlay:
